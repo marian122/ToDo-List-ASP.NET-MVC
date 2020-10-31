@@ -1,22 +1,22 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ToDoList.Services.ToDoS.Interfaces;
+using ToDoList.Services.ToDoS;
+using ToDoList.Mapping;
+using ToDoList.Models;
+using System.Reflection;
 
 namespace ToDoList
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -44,11 +44,19 @@ namespace ToDoList
                 x.Password.RequireUppercase = false;
                 x.Password.RequireNonAlphanumeric = false;
             });
+
+
+            services.AddTransient<IToDoService, ToDoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            AutoMapperConfig.RegisterMappings(
+                typeof(ErrorViewModel).GetTypeInfo().Assembly,
+                typeof(ToDosViewModel).GetTypeInfo().Assembly,
+                typeof(ToDoListModel).GetTypeInfo().Assembly);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

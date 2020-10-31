@@ -5,22 +5,37 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ToDoList.Data.Entities;
 using ToDoList.Models;
+using ToDoList.Services.ToDoS;
+using ToDoList.Mapping;
+using Microsoft.EntityFrameworkCore;
+using ToDoList.Services.ToDoS.Interfaces;
 
 namespace ToDoList.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IToDoService toDoService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IToDoService toDoService)
         {
             _logger = logger;
+            this.toDoService = toDoService;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var todos = await this.toDoService.GetAllToDosAsync<ToDosViewModel>();
+
+            var todosView = new ToDoListModel()
+            {
+                AllToDos = todos
+            };
+
+            return this.View(todosView);
         }
 
         public IActionResult Privacy()

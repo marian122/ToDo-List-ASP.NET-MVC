@@ -1,1 +1,35 @@
-﻿<h1>here adding</h1>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@model ToDoList.Models.AddToDoInputModel
+
+<section id="contactsForm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form method="post">
+                    @if (this.SignInManager.IsSignedIn(this.User))
+                    {
+                        <div class="form-group">
+                            <label asp-for="Description">Description</label>
+                            <input asp-for="Description" class="form-control">
+                        </div>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+
+                        <div class="form-group">
+                            <label asp-for="AlertOn">AlertOn</label>
+                            <input asp-for="AlertOn" class="form-control">
+                        </div>
+                        <span asp-validation-for="AlertOn" class="text-danger"></span>
+
+                        //if isActive == do something
+                    }
+
+                    <button type="submit" class="btn btn-outline-dark">Add</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

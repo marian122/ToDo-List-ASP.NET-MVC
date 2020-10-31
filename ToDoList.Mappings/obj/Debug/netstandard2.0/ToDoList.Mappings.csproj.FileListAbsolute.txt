@@ -1,0 +1,9 @@
+D:\Code\Internship Training\ToDoList\ToDoList.Mappings\bin\Debug\netstandard2.0\ToDoList.Mappings.deps.json
+D:\Code\Internship Training\ToDoList\ToDoList.Mappings\bin\Debug\netstandard2.0\ToDoList.Mappings.dll
+D:\Code\Internship Training\ToDoList\ToDoList.Mappings\obj\Debug\netstandard2.0\ToDoList.Mappings.csprojAssemblyReference.cache
+D:\Code\Internship Training\ToDoList\ToDoList.Mappings\obj\Debug\netstandard2.0\ToDoList.Mappings.AssemblyInfoInputs.cache
+D:\Code\Internship Training\ToDoList\ToDoList.Mappings\obj\Debug\netstandard2.0\ToDoList.Mappings.AssemblyInfo.cs
+D:\Code\Internship Training\ToDoList\ToDoList.Mappings\bin\Debug\netstandard2.0\ToDoList.Mappings.pdb
+D:\Code\Internship Training\ToDoList\ToDoList.Mappings\obj\Debug\netstandard2.0\ToDoList.Mappings.csproj.CoreCompileInputs.cache
+D:\Code\Internship Training\ToDoList\ToDoList.Mappings\obj\Debug\netstandard2.0\ToDoList.Mappings.dll
+D:\Code\Internship Training\ToDoList\ToDoList.Mappings\obj\Debug\netstandard2.0\ToDoList.Mappings.pdb
