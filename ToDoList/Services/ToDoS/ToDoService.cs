@@ -30,6 +30,7 @@
                 AlertOn = model.AlertOn,
                 CreatedOn = DateTime.Now,
                 IsActive = true,
+                UserId = model.UserId,
             };
 
             await this.db.AddAsync(result);
@@ -82,6 +83,22 @@
             }
 
             throw new InvalidOperationException(GlobalContstants.InvalidOperationErrors.AllTodosError);
+        }
+
+        public async Task<IEnumerable<TViewModel>> GetAllToDosAsyncForUser<TViewModel>(string userId)
+        {
+            var result = await this.db.Todos.OrderBy(x => x.CreatedOn)
+                .Where(x => x.UserId == userId)
+                .To<TViewModel>()
+                .ToListAsync();
+
+
+            if (result != null)
+            {
+                return result;
+            }
+            throw new InvalidOperationException(GlobalContstants.InvalidOperationErrors.AllTodosError);
+
         }
 
         public ToDo GetById(string id)

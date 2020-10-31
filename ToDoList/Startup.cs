@@ -11,6 +11,8 @@ using ToDoList.Services.ToDoS;
 using ToDoList.Mapping;
 using ToDoList.Models;
 using System.Reflection;
+using ToDoList.Services.Users.Interfaces;
+using ToDoList.Services.Users;
 
 namespace ToDoList
 {
@@ -47,6 +49,8 @@ namespace ToDoList
 
 
             services.AddTransient<IToDoService, ToDoService>();
+            services.AddTransient<IUsersService, UsersService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
