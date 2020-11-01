@@ -12,6 +12,8 @@ namespace ToDoList.Services.ToDoS.Interfaces
 
         Task<IEnumerable<TViewModel>> GetAllToDosAsyncForUser<TViewModel>(string userId);
 
+        List<ToDo> GetTodosList();
+
         Task<bool> AddTodo(AddToDoInputModel model);
 
         Task<EditTodoModel> GetTodoForEdit(string id);

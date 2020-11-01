@@ -15,16 +15,17 @@
     <tbody>
         @foreach (var todo in Model.AllToDos)
         {
-            <tr id="bodyTr">
+
+            <tr>
                 <td>@todo.Description</td>
                 <td>@todo.AlertOn</td>
                 <td>@todo.CreatedOn</td>
                 <td>
                     <a class="btn btn-outline-dark" asp-area="" asp-controller="Todo" asp-action="Edit" asp-route-todoId="@todo.Id">Edit</a>
                     <a class="btn btn-outline-dark" asp-area="" asp-controller="Todo" asp-action="Delete" asp-route-todoId="@todo.Id">Delete</a>
-
                 </td>
             </tr>
+
         }
 
 

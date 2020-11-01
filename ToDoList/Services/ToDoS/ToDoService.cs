@@ -77,6 +77,7 @@
                 .To<TViewModel>()
                 .ToListAsync();
 
+            
             if (result != null)
             {
                 return result;
@@ -88,7 +89,7 @@
         public async Task<IEnumerable<TViewModel>> GetAllToDosAsyncForUser<TViewModel>(string userId)
         {
             var result = await this.db.Todos.OrderBy(x => x.CreatedOn)
-                .Where(x => x.UserId == userId)
+                .Where(x => x.UserId == userId && x.AlertOn >= DateTime.Now)
                 .To<TViewModel>()
                 .ToListAsync();
 
@@ -116,11 +117,14 @@
                     AlertOn = toDo.AlertOn,
                     IsActive = toDo.IsActive
                 };
-
+                
                 return result;
             }
 
             throw new InvalidOperationException(GlobalContstants.InvalidOperationErrors.GetCurrentEdit);
         }
+        
+        public List<ToDo> GetTodosList()
+            => this.db.Todos.ToList();
     }
 }
